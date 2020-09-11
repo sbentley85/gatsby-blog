@@ -17,6 +17,7 @@ const BlogPage = () => {
         node {
           title
           slug
+          author
           publishedDate(fromNow:true)
         }
       }
@@ -35,7 +36,11 @@ const BlogPage = () => {
             <li className={blogStyles.post}>
               <Link to={`/blog/${edge.node.slug}`}>
                 <h2>{edge.node.title}</h2>
-                <p>{edge.node.publishedDate}</p>
+                <div className={blogStyles.details}>
+                  <span id={blogStyles.author} className="light">{edge.node.author}</span>
+                  <span id={blogStyles.date} className="light">{edge.node.publishedDate}</span>
+                </div>
+                
               </Link>
              </li>
           )

@@ -3,6 +3,7 @@ import BlogLayout from '../components/blog-layout'
 import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from '../components/head'
+import blogTemplateStyles from './blog-template.module.scss';
 
 // query used for markdown 
 /* export const query = graphql`
@@ -31,6 +32,7 @@ export const query = graphql`
         contentfulBlogPost(slug: {eq: $slug}) {
             title
             publishedDate(fromNow:true)
+            author
             body {
                 json
             }    
@@ -56,7 +58,11 @@ const Blog = (props) => {
         <BlogLayout>
             <Head title={props.data.contentfulBlogPost.title}/>
             <h1>{props.data.contentfulBlogPost.title}</h1>
-            <p className="light">{props.data.contentfulBlogPost.publishedDate}</p>
+            <div className={blogTemplateStyles.details}>
+                <p className="light">{props.data.contentfulBlogPost.author}</p>
+                <p className="light">{props.data.contentfulBlogPost.publishedDate}</p>
+            </div>
+            
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
         </BlogLayout>
     )
