@@ -55,8 +55,8 @@ const Blog = (props) => {
     return (
         <BlogLayout>
             <Head title={props.data.contentfulBlogPost.title}/>
-            <h3>{props.data.contentfulBlogPost.title}</h3>
-            <p>{props.data.contentfulBlogPost.publishedDate}</p>
+            <h1>{props.data.contentfulBlogPost.title}</h1>
+            <p className="light">{props.data.contentfulBlogPost.publishedDate}</p>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
         </BlogLayout>
     )

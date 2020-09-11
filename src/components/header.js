@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import taranaki from '../assets/img/taranaki.jpg'
+import taranaki from '../assets/img/taranaki2.jpg'
 //import './header.module.scss'
 import headerStyles from './header.module.scss'
 
@@ -20,15 +20,14 @@ const Header = () => {
   return (
     <header className={headerStyles.header}>
         <div className={headerStyles.heroWrapper}>
-          
-          <img src={taranaki} className={headerStyles.heroImage}/>
-          
-          
+        <Link  to="/">
+          <img src={taranaki} className={headerStyles.heroImage} alt="Mount Taranaki"/>
           <h1 className={headerStyles.title}>
-          <Link  to="/">
+          
             {data.site.siteMetadata.title}
-          </Link>
+          
           </h1>
+          </Link>
         </div>
         
       
