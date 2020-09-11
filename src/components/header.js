@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from 'gatsby'
-
+import taranaki from '../assets/img/taranaki.jpg'
 //import './header.module.scss'
 import headerStyles from './header.module.scss'
 
@@ -19,29 +19,19 @@ const Header = () => {
 
   return (
     <header className={headerStyles.header}>
-      <h1>
-        <Link className={headerStyles.title} to="/">
-          {data.site.siteMetadata.title}
-        </Link>
-        </h1>
-      <nav>
-          <ul className={headerStyles.navList}>
-              <li >
-                <Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to="/">Home</Link>            
-              </li>
-              
-              <li>
-                <Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to="/skills">Skills</Link>            
-              </li>
-              <li>
-                <Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to="/about">About</Link>            
-              </li>
-              <li>
-                <Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to="/contact">Contact</Link>           
-              </li>
-              
-          </ul>
-      </nav>
+        <div className={headerStyles.heroWrapper}>
+          
+          <img src={taranaki} className={headerStyles.heroImage}/>
+          
+          
+          <h1 className={headerStyles.title}>
+          <Link  to="/">
+            {data.site.siteMetadata.title}
+          </Link>
+          </h1>
+        </div>
+        
+      
       
       
       

@@ -2,9 +2,7 @@
   font-weight: 300;
 }
 
-a:not(header) {
-  color: white;
-}
+
 /* Reset provided by https://github.com/gatsbyjs/gatsby-starter-blog via MIT license */
 
 html {
@@ -16,7 +14,7 @@ html {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(90deg, rgba(17,123,201,1) 0%, rgba(75,213,231,1) 100%);
+    
     color: white;
   }
   article,
