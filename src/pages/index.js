@@ -1,39 +1,49 @@
-import React from "react";
-import { Link, withPrefix } from 'gatsby'
+import React from "react"
+import BlogLayout from '../components/blog-layout'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import blogStyles from './blog.module.scss';
 import Head from '../components/head'
-import Layout from '../components/layout'
-import Portfolio from '../components/portfolio'
 
+const BlogPage = () => {
+  const data = useStaticQuery(graphql`
+  query {
+    allContentfulBlogPost (
+      sort: {
+        fields:publishedDate,
+        order:DESC
+      }
+    ) {
+      edges {
+        node {
+          title
+          slug
+          publishedDate(fromNow:true)
+        }
+      }
+    }
+  }
 
-const IndexPage = () => {
-
-  return (
-    <Layout>
-      <Head title="Home" />
-
-      <p className="light">
-        I am a web developer with a passion for using the latest technologies to
-        create interesting and functional websites. Please take a look through
-        my projects below and feel free to 
-        <Link to="/contact"> get in touch</Link>
-      </p>
-
-      <p>
-        <a
-          rel="noopener noreferrer"
-          href={withPrefix("/simonbentleycv20.pdf")}
-          target="blank"
-        >
-          Full CV
-        </a>
-      </p>
-
-      <Portfolio />
-    </Layout>
-  )
+  `)
   
+  return (
+    <BlogLayout>
+      <Head title="Blog"/>
+      
+      <ol className={blogStyles.posts}>
+        {data.allContentfulBlogPost.edges.map(edge => {
+          return (
+            <li className={blogStyles.post}>
+              <Link to={`/blog/${edge.node.slug}`}>
+                <h2>{edge.node.title}</h2>
+                <p>{edge.node.publishedDate}</p>
+              </Link>
+             </li>
+          )
+        })}
+      </ol>
+      
+    </BlogLayout>
+  )
 }
 
-export default IndexPage;
-
-
+export default BlogPage;  
