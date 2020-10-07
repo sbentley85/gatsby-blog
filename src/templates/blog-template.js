@@ -31,7 +31,7 @@ export const query = graphql`
     query($slug: String!) {
         contentfulBlogPost(slug: {eq: $slug}) {
             title
-            publishedDate(fromNow:true)
+            publishedDate(formatString: "Do MMM YYYY")
             author
             body {
                 json
